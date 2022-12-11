@@ -56,27 +56,31 @@ print("Test   :" ,Test)
 print('True :', true)
 print('False : ', false)
 
-for i in range(4) :
-    for index,j in enumerate( items[i] ):
-        mult = 0
+def main() :
+    for i in range(4) :
+        for index,j in enumerate( items[i] ):
+            mult = 0
 
-        if operand[i] == 'old' : 
-            if operator[i] == '*' : mult = int ((int(j) * int(j)) / 3)
-            else : mult = int ((int(j) + int(j)) / 3)
+            if operand[i] == 'old' : 
+                if operator[i] == '*' : mult = int ((int(j) * int(j)) / 3)
+                else : mult = int ((int(j) + int(j)) / 3)
 
-        else :
-            if operator[i] == '*' : mult = int ((int(j) * int(operand[i])) / 3)
-            else : mult = int ((int(j) + int(operand[i])) / 3)
+            else :
+                if operator[i] == '*' : mult = int ((int(j) * int(operand[i])) / 3)
+                else : mult = int ((int(j) + int(operand[i])) / 3)
 
-        print(f'{int(j)}  {operator[i]} with {operand[i]} gives {mult}')
+            # print(f'{int(j)}  {operator[i]} with {operand[i]} gives {mult}')
 
-        if mult % int(Test[i]) == 0 :
-            # print(int(true[i]))
-            items[int(true[i])].append(mult)
+            if mult % int(Test[i]) == 0 :
+                # print(int(true[i]))
+                items[int(true[i])].append(mult)
 
-        if mult % int(Test[i]) != 0 :
-            # print(int(false[i]))
-            items[int(false[i])].append(mult)
-        
-print("Starting items   :" , items)
+            if mult % int(Test[i]) != 0 :
+                # print(int(false[i]))
+                items[int(false[i])].append(mult)
+            
+    # print("Starting items   :" , items)
 
+for i in range(19) :
+    main()
+    print('finish',i)
