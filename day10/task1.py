@@ -13,7 +13,6 @@ for point in points :
     count = [1]
     i = 0
     for data in data_move :
-        
         if data[0] == 'addx' :
             i += 2
             if i >= point :
@@ -24,5 +23,4 @@ for point in points :
             i += 1
 
     final.append(point*sum(count))
-
 print(sum(final))
