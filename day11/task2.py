@@ -56,19 +56,40 @@ print('False : ', false)
 
 monks = [0, 0, 0, 0, 0, 0, 0, 0]
 
+# str into int type
+test1 = []
+for i in Test :
+    i = int(i)
+    test1.append(i)
+
+# Finding LCM
+lcm = 0
+import math
+def LCMofArray(a):
+    global lcm
+    lcm = a[0]
+    for i in range(1,len(a)):
+        lcm = lcm*a[i]//math.gcd(lcm, a[i])
+    lcm = lcm
+
+LCMofArray(test1)
+
+
 def main() :
+    global lcm
+
     for i in range(len(available_mon)) :
         to_remove = []
         for j in  items[i] :
             mult = 0
 
             if operand[i] == 'old' : 
-                if operator[i] == '*' : mult = int ((int(j) * int(j)) / 3)
-                else : mult = int ((int(j) + int(j)) / 3)
+                if operator[i] == '*' : mult = int ((int(j) * int(j)) % lcm)
+                else : mult = int ((int(j) + int(j)) % 3)
 
             else :
-                if operator[i] == '*' : mult = int ((int(j) * int(operand[i])) / 3)
-                else : mult = int ((int(j) + int(operand[i])) / 3)
+                if operator[i] == '*' : mult = int ((int(j) * int(operand[i])) % lcm)
+                else : mult = int ((int(j) + int(operand[i])) % lcm)
 
             if mult % int(Test[i]) == 0 :
                 items[int(true[i])].append(mult)
@@ -82,7 +103,7 @@ def main() :
         for i in to_remove :
             items[i[1]].remove(i[0])
                 
-for i in range(20) :
+for i in range(10000) :
     main()
 
 monks.sort()
