@@ -7,7 +7,6 @@ for i in data_ :
     i = i.split('\n')
     data.append([eval(k) for k in i])
 
-
 # checking parallel
 def check(left,right) :
     global value
